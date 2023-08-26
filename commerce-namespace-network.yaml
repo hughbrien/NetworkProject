@@ -1,0 +1,35 @@
+kind: Namespace
+metadata:
+  name: commerce
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog
+  namespace: commerce
+  labels:
+    app: catalog
+spec:
+  selector:
+    app: catalog
+  ports:
+  - protocol: "TCP"
+    port: 5000
+    targetPort: 5000
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+  namespace: commerce
+  labels:
+    app: shipping
+spec:
+  selector:
+    app: shipping
+  ports:
+  - protocol: "TCP"
+    port: 5000
+    targetPort: 5000
+  type: LoadBalancer
